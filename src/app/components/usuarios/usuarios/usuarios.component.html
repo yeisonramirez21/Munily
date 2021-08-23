@@ -1,0 +1,46 @@
+<!-- Cabecera-->
+<div class="card border-darkmb-3">
+  <div class="card-header text-uppercase fs-1 fw-bold">Listado de Usuarios</div>
+  <div class="card-body text-primary text-uppercase ">
+
+    <!-- Boton crear-->
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-dark" type="button" [routerLink]="['/usuarios/form']">Crear Usuario</button>
+    </div>
+    <!-- Tabla-->
+     <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Salario</th>
+          <th>Telefono</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{usuario._id}}</td>
+          <td>{{usuario.name}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.designation}}</td>
+          <td>{{usuario.phoneNumber}}</td>
+          <td>
+            <button type="button" name="editar" [routerLink]="['/usuarios/form',usuario._id]"
+                    class="btn btn-dark">Editar
+            </button>
+          </td>
+          <td><!--*ngIf="usuario._id" -->
+            <button
+                    type="button" name="eliminar"
+                    (click)='delete(usuario)'
+                    class="btn btn-danger btn-sm">Eliminar
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
